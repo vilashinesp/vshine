@@ -1,0 +1,59 @@
+services:
+  - type: web
+    name: tailormate-api
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+
+    plan: free
+    region: singapore
+
+    healthCheckPath: /health
+
+    envVars:
+      - key: ENV
+        value: production
+
+      - key: DEBUG
+        value: false
+
+      - key: SECRET_KEY
+        value: change-this-to-a-long-random-secret
+
+      - key: DATABASE_URL
+        value: postgresql://postgres.ieotmaucmzrgupxlxqgy:AKKALOVER2025@aws-0-ap-northeast-1.pooler.supabase.com:6543/postgres?pgbouncer=true
+
+      - key: SUPABASE_URL
+        value: https://ieotmaucmzrgupxlxqgy.supabase.co
+
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        value: sb_secret_your_secret_key
+
+      - key: SUPABASE_ANON_KEY
+        value: sb_publishable_your_publishable_key
+
+      - key: GOOGLE_CLIENT_ID
+        value: ""
+
+      - key: GOOGLE_CLIENT_SECRET
+        value: ""
+
+      - key: GOOGLE_REDIRECT_URI
+        value: https://tailormate-api.onrender.com/api/v1/auth/google/callback
+
+      - key: STRIPE_SECRET_KEY
+        value: ""
+
+      - key: STRIPE_WEBHOOK_SECRET
+        value: ""
+
+      - key: RAZORPAY_KEY_ID
+        value: ""
+
+      - key: RAZORPAY_KEY_SECRET
+        value: ""
+
+      - key: ANTHROPIC_API_KEY
+        value: ""
+
+      - key: FRONTEND_URL
+        value: https://tailormate.vercel.app

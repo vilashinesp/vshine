@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-fraunces: "Fraunces", serif;
+  --font-inter: "Inter", sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-chalk text-ink font-body antialiased;
+  }
+
+  .dark body {
+    @apply bg-ink text-chalk;
+  }
+
+  ::selection {
+    @apply bg-thread/20 text-thread-dark;
+  }
+
+  :focus-visible {
+    outline: 2px solid theme("colors.thread.DEFAULT");
+    outline-offset: 2px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@layer utilities {
+  .stitch-divider {
+    background-image: repeating-linear-gradient(
+      to right,
+      currentColor 0,
+      currentColor 6px,
+      transparent 6px,
+      transparent 12px
+    );
+    height: 1px;
+    opacity: 0.35;
+  }
+}
